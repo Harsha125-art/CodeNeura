@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuro Track</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body class="bg-indigo-50 min-h-screen flex">
+
+  <!-- Sidebar Navbar -->
+  <aside class="w-24 bg-white shadow-lg rounded-r-3xl p-6 flex flex-col items-center fixed h-screen">
+    <i class="fa-solid fa-house text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
+    <i class="fa-solid fa-fire text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
+    <i class="fa-solid fa-clock-rotate-left text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
+    <i class="fa-solid fa-user text-indigo-600 text-2xl hover:text-indigo-800 cursor-pointer"></i>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 ml-28 p-10 flex flex-col">
+    
+    <!-- Header -->
+    <h1 class="text-5xl font-bold text-indigo-900 mb-4">NEURO TRACK</h1>
+    <h2 class="text-2xl font-semibold text-indigo-800 mb-8">
+      Describe how you are feeling today...
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-10">
+
+      <!-- Mood Visualization -->
+      <div class="w-full md:w-64 h-64 rounded-full flex items-center justify-center shadow-2xl bg-gradient-to-br from-indigo-400 to-indigo-200 mb-6 md:mb-0">
+        <img src="img.png" alt="Mood" class="w-56 h-56 rounded-full object-cover shadow-inner"/>
+      </div>
+
+      <!-- Chat Interface -->
+      <div class="flex-1 flex flex-col bg-indigo-50 rounded-2xl shadow-2xl p-6">
+        <div class="chat-container flex-1 overflow-y-auto space-y-4 mb-4">
+          <div class="bot-message bg-white p-4 rounded-xl shadow max-w-xs">
+            <p class="text-indigo-800">Hi there! How are you feeling today?</p>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <div class="flex gap-2">
+          <input
+            type="text"
+            placeholder="Describe your mood..."
+            class="flex-1 p-3 rounded-lg border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button class="bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition-colors">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
