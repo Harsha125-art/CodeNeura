@@ -1,9 +1,11 @@
+# utils/preprocessing.py
 import re
 
-def clean_text(text):
-    # Remove emojis
-    text = re.sub(r'[^\x00-\x7F]+','', text)
-    # Remove extra spaces and punctuation
-    text = re.sub(r'[^\w\s]', '', text)
-    text = text.strip().lower()
+def clean_text(text: str) -> str:
+    """
+    Simple text preprocessing: lowercase, remove extra spaces and special chars
+    """
+    text = text.lower().strip()
+    text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
+    text = re.sub(r"\s+", " ", text)
     return text

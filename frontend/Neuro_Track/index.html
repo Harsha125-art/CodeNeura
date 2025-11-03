@@ -1,73 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuro Track</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro Track</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-</head>
-<body class="bg-indigo-50 min-h-screen flex">
-
-  <!-- Sidebar Navbar -->
-  <aside class="w-24 bg-white shadow-lg rounded-r-3xl p-6 flex flex-col items-center fixed h-screen">
-    <i class="fa-solid fa-house text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
-    <i class="fa-solid fa-fire text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
-    <i class="fa-solid fa-clock-rotate-left text-indigo-600 text-2xl mb-8 hover:text-indigo-800 cursor-pointer"></i>
-    <i class="fa-solid fa-user text-indigo-600 text-2xl hover:text-indigo-800 cursor-pointer"></i>
-  </aside>
-
-  <!-- Main Content -->
-  <div class="flex-1 ml-28 p-10 flex flex-col">
-    
+  <body class="bg-[#0f172a] text-gray-200 min-h-screen flex flex-col">
     <!-- Header -->
-    <h1 class="text-5xl font-bold text-indigo-900 mb-4">NEURO TRACK</h1>
-    <h2 class="text-2xl font-semibold text-indigo-800 mb-8">
-      Describe how you are feeling today...
-    </h2>
-
-    <div class="flex flex-col md:flex-row gap-10">
-
-      <!-- Mood Visualization -->
-      <div class="w-full md:w-64 h-64 rounded-full flex items-center justify-center shadow-2xl bg-gradient-to-br from-indigo-400 to-indigo-200 mb-6 md:mb-0">
-        <img src="img.png" alt="Mood" class="w-56 h-56 rounded-full object-cover shadow-inner"/>
+    <header class="flex justify-between items-center p-5 border-b border-slate-700">
+      <h1 class="text-5xl font-bold text-indigo-400">NEURO TRACK</h1>
+      <div class="flex gap-4">
+        <button
+          onclick="window.location.href='signin.html'"
+          class="bg-indigo-600 text-white text-xl font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-indigo-500 transition-colors"
+        >
+          Sign In
+        </button>
+        <button
+          onclick="window.location.href='signup.html'"
+          class="bg-indigo-600 text-white text-xl font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-indigo-500 transition-colors"
+        >
+          Sign Up
+        </button>
       </div>
+    </header>
 
-      <!-- Chat Interface -->
-      <div class="flex-1 flex flex-col bg-indigo-50 rounded-2xl shadow-2xl p-6">
-        <div class="chat-container flex-1 overflow-y-auto space-y-4 mb-4">
-          <div class="bot-message bg-white p-4 rounded-xl shadow max-w-xs">
-            <p class="text-indigo-800">Hi there! How are you feeling today?</p>
+    <!-- Main Layout -->
+    <main class="flex flex-1 items-start gap-6 p-6">
+      <!-- Sidebar -->
+      <nav
+        class="bg-[#1e293b] rounded-3xl shadow-lg p-6 flex flex-col justify-start items-center gap-8 text-2xl sticky top-20 h-[70vh]"
+      >
+        <a href="#" class="hover:text-yellow-400"><i class="fa-solid fa-house"></i></a>
+        <a href="#streak" class="hover:text-yellow-400"><i class="fa-solid fa-fire"></i></a>
+        <a href="#calendar" class="hover:text-yellow-400"><i class="fa-solid fa-calendar-days"></i></a>
+        <a href="#" id="historyIcon" class="hover:text-yellow-400"><i class="fa-solid fa-clock-rotate-left"></i></a>
+        <a href="#" class="hover:text-yellow-400"><i class="fa-solid fa-user"></i></a>
+      </nav>
+
+      <!-- Main Section -->
+      <section class="flex-1">
+        <!-- Heading -->
+        <h2 class="text-3xl font-bold text-indigo-300 mb-6 text-center">
+          Describe what happened today...
+        </h2>
+
+        <!-- Content Card -->
+        <div class="bg-[#1e293b] rounded-2xl shadow-lg p-8">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <!-- Mood Visualization -->
+            <div
+              class="w-[350px] h-[350px] rounded-full flex items-center justify-center shadow-lg flex-shrink-0 border-2 border-indigo-500"
+            >
+              <img
+                src="img.png"
+                alt="Mood visualization"
+                class="w-full h-full rounded-full object-cover"
+              />
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="w-full md:w-2/3 h-[350px]">
+              <div class="bg-[#111827] rounded-xl p-6 flex flex-col h-[350px]">
+                <div class="chat-container flex-1 mb-4 overflow-y-auto space-y-4 max-h-72">
+                  <div class="bot-message bg-[#374151] p-4 rounded-xl shadow-sm max-w-xs">
+                    <p class="text-yellow-300">
+                      Hi there! How are you feeling today?
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input flex gap-2 items-center">
+                  <select
+                    id="chatMode"
+                    class="p-3 rounded-lg border border-gray-600 bg-[#1e293b] text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="Friend">Friend</option>
+                    <option value="Coach">Coach</option>
+                  </select>
+
+                  <input
+                    type="text"
+                    placeholder="Describe your mood..."
+                    class="flex-1 p-3 rounded-lg border border-gray-600 bg-[#1e293b] text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+
+                  <button
+                    class="bg-yellow-500 text-gray-900 p-3 rounded-lg hover:bg-yellow-400 transition-colors"
+                  >
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Input -->
-        <div class="flex gap-2">
-          <input
-            type="text"
-            placeholder="Describe your mood..."
-            class="flex-1 p-3 rounded-lg border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <button class="bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition-colors">
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-<script src="script.js"></script>
-</body>
+        <!-- Streak Section -->
+        <section id="streak" class="mt-10 space-y-6">
+          <div
+            class="bg-[#1e293b] rounded-2xl shadow-md p-10 flex flex-col items-center justify-center text-center"
+          >
+            <div class="flex items-center justify-center gap-3 mb-4">
+              <i class="fa-solid fa-fire text-yellow-400 text-9xl"></i>
+              <span id="streak-count" class="text-8xl font-extrabold text-indigo-300">7</span>
+            </div>
+
+            <p class="text-xl font-medium text-indigo-300">
+              Hurrah! You have maintained
+              <span class="text-yellow-400 font-semibold">7 days</span> streak!
+            </p>
+          </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="w-full mt-10 flex flex-col items-center">
+          <h2 class="text-2xl font-semibold text-indigo-300 mb-4">Your Stress Calendar</h2>
+
+          <!-- Month Selector -->
+          <div class="flex items-center gap-2 mb-4">
+            <label for="monthSelect" class="text-indigo-300 font-medium">Select Month:</label>
+            <select
+              id="monthSelect"
+              class="p-2 rounded-lg border border-gray-600 bg-[#1e293b] text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+            ></select>
+          </div>
+
+          <!-- Calendar Grid -->
+          <div
+            id="calendarGrid"
+            class="grid grid-cols-7 gap-2 bg-[#0f172a] p-4 rounded-xl shadow-md"
+          ></div>
+
+          <!-- Selected Date Emotion -->
+          <div
+            id="emotionBox"
+            class="mt-6 w-80 text-center p-4 bg-[#1e293b] border border-gray-700 rounded-lg shadow-md text-yellow-300 font-medium"
+          >
+            Click a date to see your top emotion 💭
+          </div>
+
+          <!-- History Chat / Graph -->
+          <div id="historyChat" class="hidden bg-[#111827] text-white p-6 rounded-2xl shadow-lg mt-6">
+            <h3 class="text-xl font-bold mb-4">Your Risk Level History</h3>
+            <canvas id="riskChart" class="w-full h-64"></canvas>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
 </html>
